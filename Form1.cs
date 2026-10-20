@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Globalization;
+using System.IO;
+using System.Text;
 
 namespace WildLifeRehab
 {
@@ -233,7 +236,47 @@ namespace WildLifeRehab
             MessageBox.Show($"Summary Generated!\n\nTotal Animals: {totalAnimals}\nAverage Age: {averageAge:F1}\nAverage Score: {averageScore:F1}",
                             "Summary Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void SaveSummaryToFile()
+        {
+            string summaryPath = Path.Combine(
+                AppContext.BaseDirectory,
+                "summary.txt");
+        
+            StringBuilder report = new StringBuilder();
+        
+            report.AppendLine("BAOBAB RIDGE WILDLIFE REHABILITATION");
+            report.AppendLine("SUMMARY REPORT");
+            report.AppendLine($"Generated: {DateTime.Now:yyyy-MM-dd HH:mm}");
+            report.AppendLine();
+        
+            report.AppendLine(
+                $"Total Animals: {_animals.Count}");
+        
+            if (_animals.Count == 0)
+            {
+                report.AppendLine("Average Age: N/A");
+                report.AppendLine("Average Score: N/A");
+            }
+            
+            else
+            {
+                report.AppendLine(
+                    $"Average Age: {_animals.Average(a => a.Age).ToString("F2", CultureInfo.InvariantCulture)}");
+        
+                report.AppendLine(
+                    $"Average Score: {_animals.Average(a => a.RecoveryScore).ToString("F2", CultureInfo.InvariantCulture)}");
+            }
+        
+            report.AppendLine();
+        
+            report.AppendLine($"Critical: {_animals.Count(a => a.Status == "Critical")}");      
+            report.AppendLine($"Serious: {_animals.Count(a => a.Status == "Serious")}");       
+            report.AppendLine($"Stable: {_animals.Count(a => a.Status == "Stable")}");        
+            report.AppendLine($"Recovering: {_animals.Count(a => a.Status == "Recovering")}");        
+            report.AppendLine($"Release-Ready: {_animals.Count(a => a.Status == "Release-Ready")}");
+        
+            File.WriteAllText(summaryPath, report.ToString());
+        }
     }
-
-
 }
