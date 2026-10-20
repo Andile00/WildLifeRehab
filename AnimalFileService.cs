@@ -4,6 +4,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
+// handles raeding and writing the animals.txt file, including parsing and formatting lines
 namespace WildLifeRehab
 {
     public class AnimalFileService
