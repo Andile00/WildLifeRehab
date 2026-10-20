@@ -1,5 +1,5 @@
 ﻿using System;
-
+//core data model for tracking individual animals through rehibilitation and recovery processes
 namespace WildLifeRehab
 {
     // Represents one animal record in the rehabilitation centre
