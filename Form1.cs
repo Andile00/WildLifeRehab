@@ -9,6 +9,7 @@ namespace WildLifeRehab
         private readonly AnimalFileService _fileService = new AnimalFileService();
         private List<Animal> _animals = new List<Animal>();
 
+        //Main form for viewing and managing anial records, including adding, searching, deleting, and generating summaries
         public Form1()
         {
             InitializeComponent();
