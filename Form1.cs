@@ -217,6 +217,10 @@ namespace WildLifeRehab
                 (a => a.Status == "Serious");
             int stableCount = _animals.Count
                 (a => a.Status == "Stable");
+            int recoveringCount = _animals.Count
+                (a => a.Status == "Recovering");
+            int releaseReadyCount = _animals.Count
+                (a => a.Status == "Release-Ready");
 
             // (Optional) You can count the other statuses too if you add labels for them later
             // int recoveringCount = _animals.Count(a => a.Status == "Recovering");
@@ -231,6 +235,10 @@ namespace WildLifeRehab
             lblCountCritical.Text = $"Critical: {criticalCount}";
             lblCountSerious.Text = $"Serious: {seriousCount}";
             lblCountStable.Text = $"Stable: {stableCount}";
+            lblCountRecovering.Text = $"Recovering: {recoveringCount}";
+            lblCountReleaseReady.Text = $"Release-Ready: {releaseReadyCount}";
+
+            SaveSummaryToFile();
 
             // Optional: Show a message box with the summary
             MessageBox.Show($"Summary Generated!\n\nTotal Animals: {totalAnimals}\nAverage Age: {averageAge:F1}\nAverage Score: {averageScore:F1}",
