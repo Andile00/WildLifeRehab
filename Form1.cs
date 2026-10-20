@@ -160,8 +160,7 @@ namespace WildLifeRehab
             var selectedAnimal = dgvAnimals.CurrentRow.DataBoundItem as Animal;
             if (selectedAnimal == null) return;
 
-            var confirm = MessageBox.Show($"Are you sure you want to delete {selectedAnimal.Name}?",
-                                          "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            var confirm = MessageBox.Show($"Are you sure you want to delete {selectedAnimal.Name}?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (confirm == DialogResult.Yes)
             {
@@ -208,9 +207,12 @@ namespace WildLifeRehab
             double averageScore = _animals.Average(a => a.RecoveryScore);
 
             // 3. Count by Status (using System.Linq)
-            int criticalCount = _animals.Count(a => a.Status == "Critical");
-            int seriousCount = _animals.Count(a => a.Status == "Serious");
-            int stableCount = _animals.Count(a => a.Status == "Stable");
+            int criticalCount = _animals.Count
+                (a => a.Status == "Critical");
+            int seriousCount = _animals.Count
+                (a => a.Status == "Serious");
+            int stableCount = _animals.Count
+                (a => a.Status == "Stable");
 
             // (Optional) You can count the other statuses too if you add labels for them later
             // int recoveringCount = _animals.Count(a => a.Status == "Recovering");
