@@ -5,7 +5,7 @@ Group Members:
 Tintswalo Chauke  — 577220
 Luke John Lacey — Student Number
 Andile Dlamini — 605098
-Ethan Westcott — Student Number
+Ethan Westcott — 604493
 
 Features:
 Add a new animal
